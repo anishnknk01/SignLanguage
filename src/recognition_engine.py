@@ -14,10 +14,12 @@ import numpy as np
 import mediapipe as mp
 from tensorflow import keras
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "model_cnn.h5")
-CLASSES_PATH = os.path.join(BASE_DIR, "classes_cnn.pkl")
-TASK_PATH = os.path.join(BASE_DIR, "hand_landmarker.task")
+SRC_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SRC_DIR)
+MODELS_DIR = os.path.join(PROJECT_ROOT, "models")
+MODEL_PATH = os.path.join(MODELS_DIR, "model_cnn.h5")
+CLASSES_PATH = os.path.join(MODELS_DIR, "classes_cnn.pkl")
+TASK_PATH = os.path.join(MODELS_DIR, "hand_landmarker.task")
 
 # Skeleton connections
 HAND_CONNECTIONS = [

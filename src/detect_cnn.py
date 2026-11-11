@@ -13,6 +13,11 @@ from collections import deque, Counter
 import mediapipe as mp
 from tensorflow import keras
 
+SRC_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SRC_DIR)
+MODELS_DIR = os.path.join(PROJECT_ROOT, "models")
+sys.path.insert(0, SRC_DIR)
+
 # Launch Desktop GUI with Sentence Builder by default
 if __name__ == "__main__" and "--cv2" not in sys.argv and "--minimal" not in sys.argv:
     try:
@@ -24,10 +29,9 @@ if __name__ == "__main__" and "--cv2" not in sys.argv and "--minimal" not in sys
 
 print("ISL Real-Time Hand-Sign Detector (CNN + MediaPipe)")
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "model_cnn.h5")
-CLASSES_PATH = os.path.join(BASE_DIR, "classes_cnn.pkl")
-TASK_PATH = os.path.join(BASE_DIR, "hand_landmarker.task")
+MODEL_PATH = os.path.join(MODELS_DIR, "model_cnn.h5")
+CLASSES_PATH = os.path.join(MODELS_DIR, "classes_cnn.pkl")
+TASK_PATH = os.path.join(MODELS_DIR, "hand_landmarker.task")
 
 # Runtime Thresholds
 CONFIDENCE_THRESHOLD = 0.72

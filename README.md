@@ -10,18 +10,29 @@ Recognized characters feed into a state-based sentence builder that requires con
 
 ## Project Structure
 
-- `gui_local.py` — CustomTkinter desktop interface with live camera feed, sentence builder, and word suggestions
-- `recognition_engine.py` — MediaPipe HandLandmarker (VIDEO mode) wrapper and 1D CNN inference engine
-- `sentence_builder.py` — Debounce and hand-release state machine for assembling characters into words and sentences
-- `nlp_suggestions.py` — Trigram and bigram next-word suggestion engine
-- `detect_cnn.py` — Entrypoint script (launches the desktop GUI by default, or standalone OpenCV HUD with `--cv2`)
-- `train_cnn.py` — 1D CNN training script with landmark scale and noise augmentation
-- `evaluate_cnn.py` — Evaluation script reporting accuracy, precision, recall, F1, and inference latency
-- `model_cnn.h5` — Trained 1D CNN weights
-- `classes_cnn.pkl` & `class_mapping.txt` — Class index to label mappings (`0-9`, `A-Z`)
-- `hand_landmarker.task` — MediaPipe hand landmarker model bundle
-- `dataset.pickle` — Extracted landmark dataset used for training and evaluation
-- `Sign_dataset2/` — Raw image dataset organized by class (`0-9`, `A-Z`)
+```text
+SignLanguage/
+├── main.py                      # Application entrypoint
+├── requirements.txt             # Python dependencies
+├── License                      # MIT License
+├── README.md                    # Project documentation
+├── src/
+│   ├── gui_local.py             # CustomTkinter desktop interface
+│   ├── recognition_engine.py    # MediaPipe HandLandmarker & 1D CNN inference engine
+│   ├── sentence_builder.py      # Debounce and hand-release state machine
+│   ├── nlp_suggestions.py       # Trigram and bigram next-word suggestion engine
+│   ├── detect_cnn.py            # Standalone OpenCV HUD detector
+│   ├── train_cnn.py             # 1D CNN training script with landmark augmentation
+│   └── evaluate_cnn.py          # Evaluation and latency benchmark script
+├── models/
+│   ├── model_cnn.h5             # Trained 1D CNN weights
+│   ├── classes_cnn.pkl          # Serialized class mapping (0-9, A-Z)
+│   ├── class_mapping.txt        # Human-readable class index mapping
+│   └── hand_landmarker.task     # MediaPipe hand landmarker model bundle
+└── data/
+    ├── dataset.pickle           # Extracted landmark dataset for training/evaluation
+    └── Sign_dataset2/           # Raw image dataset organized by class (0-9, A-Z)
+```
 
 ## Setup
 
@@ -36,7 +47,9 @@ pip install -r requirements.txt
 ### 1. Run the Desktop GUI
 
 ```bash
-python3 gui_local.py
+python3 main.py
+# or
+python3 src/gui_local.py
 ```
 
 **Keyboard Shortcuts:**
@@ -48,15 +61,17 @@ python3 gui_local.py
 ### 2. Run OpenCV Window Only
 
 ```bash
-python3 detect_cnn.py --cv2
+python3 main.py --cv2
+# or
+python3 src/detect_cnn.py --cv2
 ```
 Press `q` to quit or `d` to toggle top-5 prediction probabilities.
 
 ### 3. Train & Evaluate
 
 ```bash
-python3 train_cnn.py
-python3 evaluate_cnn.py
+python3 src/train_cnn.py
+python3 src/evaluate_cnn.py
 ```
 
 ## License

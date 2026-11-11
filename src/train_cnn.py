@@ -15,10 +15,11 @@ from sklearn.metrics import accuracy_score
 
 print("ISL Hand-Sign Recognition - 1D CNN Training")
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATASET_PATH = os.path.join(BASE_DIR, "dataset.pickle")
-OUTPUT_MODEL = os.path.join(BASE_DIR, "model_cnn.h5")
-OUTPUT_CLASSES = os.path.join(BASE_DIR, "classes_cnn.pkl")
+SRC_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SRC_DIR)
+DATASET_PATH = os.path.join(PROJECT_ROOT, "data", "dataset.pickle")
+OUTPUT_MODEL = os.path.join(PROJECT_ROOT, "models", "model_cnn.h5")
+OUTPUT_CLASSES = os.path.join(PROJECT_ROOT, "models", "classes_cnn.pkl")
 
 EPOCHS = 15
 BATCH_SIZE = 64

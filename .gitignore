@@ -9,4 +9,4 @@ env/
 .vscode/
 screenshots/
 *.log
-Sign_dataset2/
+data/Sign_dataset2/

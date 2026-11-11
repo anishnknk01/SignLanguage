@@ -14,10 +14,11 @@ from tensorflow import keras
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "model_cnn.h5")
-CLASSES_PATH = os.path.join(BASE_DIR, "classes_cnn.pkl")
-DATASET_PATH = os.path.join(BASE_DIR, "dataset.pickle")
+SRC_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SRC_DIR)
+MODEL_PATH = os.path.join(PROJECT_ROOT, "models", "model_cnn.h5")
+CLASSES_PATH = os.path.join(PROJECT_ROOT, "models", "classes_cnn.pkl")
+DATASET_PATH = os.path.join(PROJECT_ROOT, "data", "dataset.pickle")
 
 
 def evaluate():
