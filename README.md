@@ -14,7 +14,6 @@ Recognized characters feed into a state-based sentence builder that requires con
 SignLanguage/
 ├── main.py                      # Application entrypoint
 ├── requirements.txt             # Python dependencies
-├── License                      # MIT License
 ├── README.md                    # Project documentation
 ├── src/
 │   ├── gui_local.py             # CustomTkinter desktop interface
@@ -74,6 +73,3 @@ python3 src/train_cnn.py
 python3 src/evaluate_cnn.py
 ```
 
-## License
-
-MIT License
